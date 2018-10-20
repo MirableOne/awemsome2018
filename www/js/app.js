@@ -1,14 +1,12 @@
-// Dom7
 var $$ = Dom7;
 
 var user_data;
 var group_id;
-// Framework7 App main instance
+
 var app = new Framework7({
-    root: '#app', // App root element
-    name: 'Challenges', // App name
-    theme: 'auto', // Automatic theme detection
-    // App routes
+    root: '#app',
+    name: 'Challenges',
+    theme: 'auto',
     routes: [
         {
             path: '/',
@@ -275,9 +273,7 @@ var app = new Framework7({
             url: './pages/add-challenge.html',
             on: {
                 pageInit: function (e, page) {
-                    $$('.crate-challenge').on('click', function () {
-                        app.dialog.alert("!!!");
-                    });
+
                 },
             }
         }
@@ -287,6 +283,19 @@ var app = new Framework7({
 function choseGroup(id) {
     group_id = id;
     app.router.navigate('/group-node/');
+}
+
+function sendChallenge() {
+    app.request.post('http://ec2-18-217-233-76.us-east-2.compute.amazonaws.com/challenge', {
+        description: $$('#_challengeDescription').val(),
+        title: $$('#_challengeTitle').val(),
+        group_id: group_id,
+        author_id: user_data.user_id,
+        assignee_id: user_data.user_id,
+    }, function (data) {
+        app.dialog.alert("Challenge has been created.");
+        app.router.navigate('/group-node/');
+    })
 }
 
 // Init/Create views
