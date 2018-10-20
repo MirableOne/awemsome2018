@@ -236,7 +236,17 @@ var app = new Framework7({
                 },
             }
         },
-
+        {
+            path: '/add-challenge/',
+            url: './pages/add-challenge.html',
+            on: {
+                pageInit: function (e, page) {
+                    $$('.crate-challenge').on('click', function(){
+                      app.dialog.alert("!!!");
+                    });
+                },
+            }
+        },
     ],
 });
 
