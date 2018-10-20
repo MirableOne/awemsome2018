@@ -230,12 +230,47 @@ var app = new Framework7({
                         'email': 'john@doe.com',
                         'gender': 'female',
                         'toggle': ['yes'],
-                      }
+                      };
                       app.form.fillFromData('#my-form', formData);
                     });
                 },
             }
         },
+        {
+            path: '/friends/',
+            url: './pages/friends.html',
+            on: {
+                pageInit: function (e, page) {
+                    app.request.get('http://ec2-18-217-233-76.us-east-2.compute.amazonaws.com/user/list', {
+                        group_id: group_id,
+                    }, function (data) {
+                        var _data = JSON.parse(data);
+                        console.log(_data);
+                        var _list = page.app.virtualList.create({
+                            el: '.virtual-list3',
+                            items: _data,
+                            searchAll: function (query, items) {
+                                var found = [];
+                                for (var i = 0; i < items.length; i++) {
+                                    if (items[i].group_name.toLowerCase().indexOf(query.toLowerCase()) >= 0 || query.trim() === '') found.push(i);
+                                }
+                                return found;
+                            },
+                            itemTemplate:
+                            '<li>' +
+                            '<div class="item-inner">' +
+                            '<div class="item-title-row">' +
+                            '<div class="item-title">{{nick}}</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>',
+                            height: app.theme === 'ios' ? 63 : 73,
+                        })
+                    });
+                }
+            }
+        },
+
 
     ],
 });
