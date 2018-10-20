@@ -1,55 +1,92 @@
 <div class="page">
-  <form class="list" id="my-form">
-    <ul>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">Name</div>
-            <div class="item-input-wrap">
-              <input type="text" name="name" placeholder="Your name">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="/groups/" class="link icon-only panel-open" data-panel="left">
+                    <i class="icon f7-icons ios-only"><</i>
+                    <i class="icon material-icons md-only"><</i>
+                </a>
             </div>
-          </div>
+            <div class="title sliding">Profile</div>
         </div>
-      </li>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">E-mail</div>
-            <div class="item-input-wrap">
-              <input type="email" name="email" placeholder="E-mail">
-            </div>
-          </div>
+    </div>
+
+    <div class="toolbar tabbar-labels toolbar-bottom-md">
+        <div class="toolbar-inner tab-link-active">
+            <a href="#" class="tab-link">
+                <i class="icon f7-icons ios-only">User</i>
+                <i class="icon f7-icons ios-only icon-ios-fill">User</i>
+                <i class="icon material-icons md-only">User</i>
+                <span class="tabbar-label">User</span>
+            </a>
+            <a href="/group-node/" class="tab-link">
+                <i class="icon f7-icons ios-only">Challenges</i>
+                <i class="icon f7-icons ios-only icon-ios-fill">Challenges</i>
+                <i class="icon material-icons md-only">Challenges</i>
+                <span class="tabbar-label">Challenges</span>
+            </a>
+            <a href="#view-settings" class="tab-link">
+                <i class="icon f7-icons ios-only">Friends</i>
+                <i class="icon f7-icons ios-only icon-ios-fill">Friends</i>
+                <i class="icon material-icons md-only">Friends</i>
+                <span class="tabbar-label">Friends</span>
+            </a>
         </div>
-      </li>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">Gender</div>
-            <div class="item-input-wrap">
-              <select name="gender">
-                <option value="male" selected>Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-          </div>
+    </div>
+
+    <div class="page-content">
+        <form class="list" id="my-form">
+            <ul>
+                <li>
+                    <div class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Name</div>
+                            <div class="item-input-wrap">
+                                <input type="text" name="name" placeholder="Your name">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">E-mail</div>
+                            <div class="item-input-wrap">
+                                <input type="email" name="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Gender</div>
+                            <div class="item-input-wrap">
+                                <select name="gender">
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Toggle</div>
+                            <div class="item-after">
+                                <label class="toggle toggle-init">
+                                    <input type="checkbox" name="toggle" value="yes"><i class="toggle-icon"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        <div class="block block-strong row">
+            <div class="col"><a class="button convert-form-to-data" href="#">Get Data</a></div>
+            <div class="col"><a class="button fill-form-from-data" href="#">Fill Form</a></div>
         </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-inner">
-            <div class="item-title">Toggle</div>
-            <div class="item-after">
-              <label class="toggle toggle-init">
-                <input type="checkbox" name="toggle" value="yes"><i class="toggle-icon"></i>
-              </label>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </form>
-  <div class="block block-strong row">
-    <div class="col"><a class="button convert-form-to-data" href="#">Get Data</a></div>
-    <div class="col"><a class="button fill-form-from-data" href="#">Fill Form</a></div>
-  </div>
+    </div>
 </div>

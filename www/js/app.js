@@ -219,7 +219,6 @@ var app = new Framework7({
             url: './pages/user.html',
             on: {
                 pageInit: function (e, page) {
-                app.dialog.alert("Hello world");
                     $$('.convert-form-to-data').on('click', function(){
                       var formData = app.form.convertToData('#my-form');
                       alert(JSON.stringify(formData));
