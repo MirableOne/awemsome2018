@@ -219,19 +219,19 @@ var app = new Framework7({
             url: './pages/user.html',
             on: {
                 pageInit: function (e, page) {
-                    $$('.convert-form-to-data').on('click', function(){
-                      var formData = app.form.convertToData('#my-form');
-                      alert(JSON.stringify(formData));
+                    $$('.convert-form-to-data').on('click', function () {
+                        var formData = app.form.convertToData('#my-form');
+                        alert(JSON.stringify(formData));
                     });
 
-                    $$('.fill-form-from-data').on('click', function(){
-                      var formData = {
-                        'name': 'John',
-                        'email': 'john@doe.com',
-                        'gender': 'female',
-                        'toggle': ['yes'],
-                      };
-                      app.form.fillFromData('#my-form', formData);
+                    $$('.fill-form-from-data').on('click', function () {
+                        var formData = {
+                            'name': 'John',
+                            'email': 'john@doe.com',
+                            'gender': 'female',
+                            'toggle': ['yes'],
+                        };
+                        app.form.fillFromData('#my-form', formData);
                     });
                 },
             }
@@ -270,8 +270,17 @@ var app = new Framework7({
                 }
             }
         },
-
-
+        {
+            path: '/add-challenge/',
+            url: './pages/add-challenge.html',
+            on: {
+                pageInit: function (e, page) {
+                    $$('.crate-challenge').on('click', function () {
+                        app.dialog.alert("!!!");
+                    });
+                },
+            }
+        }
     ],
 });
 
