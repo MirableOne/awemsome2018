@@ -19,7 +19,34 @@ var app = new Framework7({
             url: './pages/group-node.html',
             on: {
                 pageInit: function (e, page) {
-                    app.dialog.alert(group_id);
+                    app.request.get('http://ec2-18-217-233-76.us-east-2.compute.amazonaws.com/challenge/list', {
+                        group_id: group_id,
+                    }, function (data) {
+                        var _data = JSON.parse(data);
+                        console.log(_data);
+                        var _list = page.app.virtualList.create({
+                            el: '.virtual-list2',
+                            items: _data,
+                            searchAll: function (query, items) {
+                                var found = [];
+                                for (var i = 0; i < items.length; i++) {
+                                    if (items[i].group_name.toLowerCase().indexOf(query.toLowerCase()) >= 0 || query.trim() === '') found.push(i);
+                                }
+                                return found;
+                            },
+                            itemTemplate:
+                            '<li>' +
+                            '<a href="#" class="item-link item-content" onclick="choseGroup({{group_id}})">' +
+                            '<div class="item-inner">' +
+                            '<div class="item-title-row">' +
+                            '<div class="item-title">{{title}}</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</a>' +
+                            '</li>',
+                            height: app.theme === 'ios' ? 63 : 73,
+                        })
+                    });
                 }
             }
         },
@@ -32,7 +59,6 @@ var app = new Framework7({
                         user_id: user_data.user_id,
                     }, function (data) {
                         var _data = JSON.parse(data);
-                        console.log(_data);
                         var _list = page.app.virtualList.create({
                             el: '.virtual-list',
                             items: _data,
