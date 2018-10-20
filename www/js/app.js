@@ -49,8 +49,8 @@ var app = new Framework7({
             url: './index.html',
         },
         {
-            path: '/about/',
-            url: './pages/about.html',
+            path: '/groups/',
+            url: './pages/groups.html',
             on: {
                 pageInit: function (e, page) {
                     app.request.get('http://ec2-18-217-233-76.us-east-2.compute.amazonaws.com/group/list', {
@@ -70,14 +70,14 @@ var app = new Framework7({
                             },
                             itemTemplate:
                             '<li>' +
-                            '<a href="#" class="item-link item-content">' +
-                            '<div class="item-inner">' +
-                            '<div class="item-title-row">' +
-                            '<div class="item-title">{{group_name}}</div>' +
-                            '</div>' +
-                            '<div class="item-subtitle">{{group_name}}</div>' +
-                            '</div>' +
-                            '</a>' +
+                                '<a href="#" class="item-link item-content">' +
+                                    '<div class="item-inner">' +
+                                        '<div class="item-title-row">' +
+                                            '<div class="item-title">{{group_name}}</div>' +
+                                        '</div>' +
+                                        '<div class="item-subtitle">{{group_name}}</div>' +
+                                    '</div>' +
+                                '</a>' +
                             '</li>',
                             height: app.theme === 'ios' ? 63 : 73,
                         })
@@ -111,7 +111,7 @@ $$('#sign-in__button').on('click', function (event) {
     }, function (data) {
         user_data = JSON.parse(data);
         if (user_data.user_id) {
-            app.router.navigate('/about/');
+            app.router.navigate('/groups/');
         }
         else {
             app.dialog.alert("The username or password you entered is incorrect");
