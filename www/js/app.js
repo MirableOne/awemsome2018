@@ -34,7 +34,7 @@ var app = new Framework7({
                             },
                             itemTemplate:
                             '<li>' +
-                            '<a href="#" class="item-link item-content" onclick="choseGroup({{group_id}})">' +
+                            '<a href="#" class="item-link item-content" onclick="openChat()">' +
                             '<div class="item-inner">' +
                             '<div class="item-title-row">' +
                             '<div class="item-title">{{title}}</div>' +
@@ -292,6 +292,10 @@ function sendChallenge() {
         app.dialog.alert("Challenge has been created.");
         app.router.navigate('/group-node/');
     })
+}
+
+function openChat() {
+    app.router.navigate('/messages/');
 }
 
 // Init/Create views
