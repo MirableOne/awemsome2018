@@ -57,13 +57,9 @@ var settingsView = app.views.create('#view-settings', {
 
 
 // Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
+$$('#view-home .login-button').on('click', function () {
+  var username = $$('#view-home [name="username"]').val();
+  var password = $$('#view-home [name="password"]').val();
 
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
-
-  // Alert username and password
   app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 });
