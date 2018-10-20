@@ -1,6 +1,8 @@
 // Dom7
 var $$ = Dom7;
 
+var user_data;
+
 // Framework7 App main instance
 var app  = new Framework7({
   root: '#app', // App root element
@@ -58,8 +60,20 @@ var settingsView = app.views.create('#view-settings', {
 
 // Login Screen Demo
 $$('#view-home .login-button').on('click', function () {
-  var username = $$('#view-home [name="username"]').val();
-  var password = $$('#view-home [name="password"]').val();
+  var user = $$('#view-home [name="username"]').val();
+  var pass = $$('#view-home [name="password"]').val();
 
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+app.request.get('http://ec2-18-217-233-76.us-east-2.compute.amazonaws.com/auth', { username:user, password:pass }, function (data) {
+    user_data = JSON.parse(data);
+    if(user_data.user_id)
+    {
+    //TODO
+      app.dialog.alert(data);
+    }
+    else
+    {
+      app.dialog.alert("The username or password you entered is incorrect");
+    }
+});
+  //app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 });
