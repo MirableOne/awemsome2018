@@ -219,20 +219,16 @@ var app = new Framework7({
             url: './pages/user.html',
             on: {
                 pageInit: function (e, page) {
-                    $$('.convert-form-to-data').on('click', function () {
-                        var formData = app.form.convertToData('#my-form');
-                        alert(JSON.stringify(formData));
-                    });
-
-                    $$('.fill-form-from-data').on('click', function () {
-                        var formData = {
-                            'name': 'John',
-                            'email': 'john@doe.com',
-                            'gender': 'female',
-                            'toggle': ['yes'],
+                var formData = {
+                            'name': user_data.user_name,
+                            'email': user_data.user_email,
+                            'gender': user_data.user_gender
                         };
                         app.form.fillFromData('#my-form', formData);
-                    });
+//                    $$('.convert-form-to-data').on('click', function () {
+//                        var formData = app.form.convertToData('#my-form');
+//                        alert(JSON.stringify(formData));
+//                    });
                 },
             }
         },
