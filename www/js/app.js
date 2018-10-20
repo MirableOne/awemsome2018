@@ -2,7 +2,7 @@
 var $$ = Dom7;
 
 var user_data;
-
+var group_id;
 // Framework7 App main instance
 var app = new Framework7({
     root: '#app', // App root element
@@ -13,6 +13,15 @@ var app = new Framework7({
         {
             path: '/',
             url: './index.html',
+        },
+        {
+            path: '/group-node',
+            url: './pages/group-node.html',
+            on: {
+                pageInit: function (e, page) {
+                    app.dialog.alert(group_id);
+                }
+            }
         },
         {
             path: '/groups/',
@@ -36,12 +45,11 @@ var app = new Framework7({
                             },
                             itemTemplate:
                             '<li>' +
-                                '<a href="#" class="item-link item-content">' +
+                                '<a href="#" class="item-link item-content" onclick="choseGroup({{group_id}})">' +
                                     '<div class="item-inner">' +
                                         '<div class="item-title-row">' +
                                             '<div class="item-title">{{group_name}}</div>' +
                                         '</div>' +
-                                        '<div class="item-subtitle">{{group_name}}</div>' +
                                     '</div>' +
                                 '</a>' +
                             '</li>',
@@ -55,6 +63,11 @@ var app = new Framework7({
         },
     ],
 });
+
+function choseGroup(id){
+    group_id = id;
+    app.router.navigate('/group-node/');
+}
 
 // Init/Create views
 var homeView = app.views.create('#view-home', {
@@ -84,4 +97,8 @@ $$('#sign-in__button').on('click', function (event) {
             return false;
         }
     });
+});
+
+$$('._groupSelector').on('click', function (event) {
+   alert($$(this).data('index'));
 });
